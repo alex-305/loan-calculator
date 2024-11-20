@@ -1,18 +1,27 @@
-import { NavigationMenuContent, NavigationMenuItem, NavigationMenuTrigger } from "../ui/navigation-menu"
+import { NavigationMenuContent, NavigationMenuItem, NavigationMenuLink, NavigationMenuTrigger, navigationMenuTriggerStyle } from "../ui/navigation-menu"
 
 interface NavItemProps {
     title: string;
+    href?: string;
     children?: React.ReactNode | null;
 }
 
-function NavItem({title, children}:NavItemProps) {
+function NavItem({title, href, children}:NavItemProps) {
     return(
         <>
         <NavigationMenuItem>
-            <NavigationMenuTrigger>{title}</NavigationMenuTrigger>
-            <NavigationMenuContent>
-              {children}
-            </NavigationMenuContent>
+            { children ?
+            <>
+              <NavigationMenuTrigger>{title}</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                {children}
+              </NavigationMenuContent>
+            </>
+            :
+            <a href={href} className={navigationMenuTriggerStyle()}>
+              <NavigationMenuLink>{title}</NavigationMenuLink>
+            </a>
+            }
           </NavigationMenuItem>
         </>
     )
