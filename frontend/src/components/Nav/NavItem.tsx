@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   NavigationMenuContent,
   NavigationMenuItem,
@@ -22,9 +23,9 @@ function NavItem({ title, href, children }: NavItemProps) {
             <NavigationMenuContent>{children}</NavigationMenuContent>
           </>
         ) : (
-          <a href={href} className={navigationMenuTriggerStyle()}>
+          <Link to={href ?? ""} className={navigationMenuTriggerStyle()}>
             <NavigationMenuLink>{title}</NavigationMenuLink>
-          </a>
+          </Link>
         )}
       </NavigationMenuItem>
     </>

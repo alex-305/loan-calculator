@@ -2,13 +2,14 @@ import { NavigationMenu, NavigationMenuList } from "../ui/navigation-menu";
 import NavItem from "./NavItem";
 import { Button } from "@/components/ui/button";
 import ServicesDropdown from "./ServicesDropdown";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
     <NavigationMenu className="w-full max-w-screen-xl mx-auto border-b-2 flex items-center justify-between px-4">
-      <a href="/" className="mx-3 text-lg">
+      <Link to="/" className="mx-3 text-lg">
         Lorem Ipsum Services
-      </a>
+      </Link>
       <div className="flex-grow flex justify-center">
         <NavigationMenuList className="flex">
           <NavItem title="Service">
