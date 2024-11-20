@@ -12,9 +12,9 @@ function Navbar() {
             <NavItem title="Service">
               <ServicesDropdown/>
             </NavItem>
-            <NavItem title="About" href="/about"></NavItem>
-            <NavItem title="Careers" href="/careers"></NavItem>
-            <NavItem title="Vendors Program" href="/vendors-program"></NavItem>
+            <NavItem title="About" href="/about"/>
+            <NavItem title="Careers" href="/careers"/>
+            <NavItem title="Vendors Program" href="/vendors-program"/>
           </NavigationMenuList>
         </div>
       <Button className="h-8 my-1">Get a quote</Button>
