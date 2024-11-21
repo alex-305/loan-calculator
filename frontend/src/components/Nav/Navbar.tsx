@@ -25,7 +25,9 @@ function Navbar({ className }: NavbarProps) {
           <NavItem title="Vendors Program" href="/vendors-program" />
         </NavigationMenuList>
       </div>
-      <Button className="h-8 my-1">Get a quote</Button>
+      <Link to="/loan">
+        <Button className="h-8 my-1">Get a quote</Button>
+      </Link>
     </NavigationMenu>
   );
 }
