@@ -113,14 +113,14 @@ function NumInput({
           { withSlider &&
           <div className="flex flex-row">
           
-            <div>{numberToStr(min)}</div>
+            <div className="text-sm">{numberToStr(min)}</div>
             <Slider
               value={[value]}
               onValueChange={(value: number[]) => onNumChanged(value[0])}
               max={max}
               min={min}
             />
-            <div>{numberToStr(max)}</div>
+            <div className="text-sm">{numberToStr(max)}</div>
         </div>
           }
         </div>
