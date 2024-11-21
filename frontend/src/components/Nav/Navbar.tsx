@@ -4,9 +4,14 @@ import { Button } from "@/components/ui/button";
 import ServicesDropdown from "./ServicesDropdown";
 import { Link } from "react-router-dom";
 
-function Navbar() {
+type NavbarProps = {
+  className?: string;
+};
+
+function Navbar({ className }: NavbarProps) {
   return (
-    <NavigationMenu className="w-full max-w-screen-xl mx-auto border-b-2 flex items-center justify-between px-4">
+    <NavigationMenu
+      className={`${className} w-full max-w-screen-xl mx-auto border-b-2 flex items-center justify-between px-4`}>
       <Link to="/" className="mx-3 text-lg">
         Lorem Ipsum Services
       </Link>
