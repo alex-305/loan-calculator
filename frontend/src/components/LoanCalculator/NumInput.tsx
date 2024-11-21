@@ -18,27 +18,26 @@ type NumSliderWithInputProps = {
   decrement?: number;
 };
 
-function NumInput({ 
-    value, 
-    setValue, 
-    min, 
-    max, 
-    withSlider=false, 
-    prefix="", 
-    suffix="", 
-    commas = false,
-    increment = 0,
-    decrement = 0 }
-    : NumSliderWithInputProps) {
-
+function NumInput({
+  value,
+  setValue,
+  min,
+  max,
+  withSlider = false,
+  prefix = "",
+  suffix = "",
+  commas = false,
+  increment = 0,
+  decrement = 0,
+}: NumSliderWithInputProps) {
   const numberToStr = (value: number) => {
-    let str = commas ? value.toLocaleString() : value;
+    const str = commas ? value.toLocaleString() : value;
     return `${prefix}${str}${suffix}`;
   };
 
   const strToNumber = (value: string) => {
-    const noPrefixOrSuffix = value.replace(new RegExp(`^${prefix}`), '').replace(new RegExp(`${suffix}$`), '');
-    return parseInt(noPrefixOrSuffix.replace(/[\$,]/g, ""), 10);
+    const noPrefixOrSuffix = value.replace(new RegExp(`^${prefix}`), "").replace(new RegExp(`${suffix}$`), "");
+    return parseInt(noPrefixOrSuffix.replace(/[,]/g, ""), 10);
   };
 
   const [numStr, setnumStr] = useState<string>(numberToStr(value));
@@ -73,7 +72,7 @@ function NumInput({
     val = checkForMinandMax(val);
     setValue(val);
   };
-  
+
   const onDecrement = () => {
     let val = value - decrement;
     val = checkForMinandMax(val);
@@ -86,44 +85,44 @@ function NumInput({
   };
 
   const onInputFocused = () => {
-    setIsInputFocused(true)
-    setnumStr(String(strToNumber(numStr)))
-  }
+    setIsInputFocused(true);
+    setnumStr(String(strToNumber(numStr)));
+  };
 
   useEffect(() => {
     if (!isInputFocused) setnumStr(numberToStr(value));
   }, [value]);
 
   return (
-        <div>
-          <div className="flex flex-row">
-            <Input
-              type="text"
-              placeholder="Buyout Amount"
-              value={numStr}
-              onChange={(e) => onNumInputChanged(e.target.value)}
-              onFocus={() => onInputFocused()}
-              onBlur={() => onInputUnfocused()}
-            />
-            { decrement !== 0 &&
-            <Button className="p-2" onClick={() => onDecrement()}><Icon path={mdiMinus}/></Button>}
-            { increment !== 0 &&
-            <Button className="p-2 mx-1" onClick={() => onIncrement()}><Icon path={mdiPlus}/></Button>}
-          </div>
-          { withSlider &&
-          <div className="flex flex-row">
-          
-            <div className="text-sm">{numberToStr(min)}</div>
-            <Slider
-              value={[value]}
-              onValueChange={(value: number[]) => onNumChanged(value[0])}
-              max={max}
-              min={min}
-            />
-            <div className="text-sm">{numberToStr(max)}</div>
+    <div>
+      <div className="flex flex-row">
+        <Input
+          type="text"
+          placeholder="Buyout Amount"
+          value={numStr}
+          onChange={(e) => onNumInputChanged(e.target.value)}
+          onFocus={() => onInputFocused()}
+          onBlur={() => onInputUnfocused()}
+        />
+        {decrement !== 0 && (
+          <Button className="p-2" onClick={() => onDecrement()}>
+            <Icon path={mdiMinus} />
+          </Button>
+        )}
+        {increment !== 0 && (
+          <Button className="p-2 mx-1" onClick={() => onIncrement()}>
+            <Icon path={mdiPlus} />
+          </Button>
+        )}
+      </div>
+      {withSlider && (
+        <div className="flex flex-row">
+          <div className="text-sm">{numberToStr(min)}</div>
+          <Slider value={[value]} onValueChange={(value: number[]) => onNumChanged(value[0])} max={max} min={min} />
+          <div className="text-sm">{numberToStr(max)}</div>
         </div>
-          }
-        </div>
+      )}
+    </div>
   );
 }
 
