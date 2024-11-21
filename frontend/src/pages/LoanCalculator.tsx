@@ -1,12 +1,12 @@
-import NumSliderWithInput from "@/components/LoanCalculator/NumSliderWithInput";
-import { Input } from "@/components/ui/input";
+import NumInput from "@/components/LoanCalculator/NumInput";
 import { Separator } from "@/components/ui/separator";
-import { Slider } from "@/components/ui/slider";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 function LoanCalculator() {
   const [buyoutAmount, setBuyoutAmount] = useState<number>(50000);
-  
+  const [downPayment, setDownPayment] = useState<number>(15);
+  const [termLength, setTermLength] = useState<number>(7);
+
   return (
     <div className="bg-white text-black p-5">
       <div className="text-center">
@@ -15,14 +15,42 @@ function LoanCalculator() {
       </div>
       <Separator className="my-3" />
       <div className="flex flex-row p-6">
-        <div className="w-1/2">
-          <div className="w-1/2">
+        <div className="w-1/4 space-y-10">
+          <div>
             <div>Buyout Amount</div>
-                <NumSliderWithInput 
+                <NumInput 
                 value={buyoutAmount} 
                 setValue={setBuyoutAmount} 
                 min={50000} 
-                max={5000000}/>
+                max={5000000}
+                withSlider
+                prefix="$"
+                commas
+                />
+            </div>
+            <div>
+                <div>Down Payment (minimum 15%)</div>
+                    <NumInput
+                    value={downPayment}
+                    setValue={setDownPayment}
+                    min={15}
+                    max={100}
+                    suffix="%"
+                    increment={1}
+                    decrement={1}
+                    />
+            </div>
+            <div>
+                <div>Term Length</div>
+                <NumInput
+                    value={termLength}
+                    setValue={setTermLength}
+                    min={7}
+                    max={25}
+                    suffix=" years"
+                    increment={1}
+                    decrement={1}
+                />
             </div>
         </div>
         <Separator orientation="vertical" className="h-full mx-3" />
