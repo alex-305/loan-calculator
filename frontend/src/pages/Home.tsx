@@ -1,4 +1,5 @@
 import ServiceCard from "@/components/Home/ServiceCard";
+import Testimonials from "@/components/Home/Testimonials";
 import ImgCard from "@/components/ImgCard";
 import { Button } from "@/components/ui/button";
 import {
@@ -67,11 +68,17 @@ function Home() {
           </Button>
         </div>
       </ImgCard>
-      <div className="flex justify-center align-center p-5 text-3xl font-semibold tracking-wide uppercase">Our Services</div>
+      <div className="flex justify-center align-center p-5 text-3xl font-semibold tracking-wide uppercase">
+        Our Services
+      </div>
       <div className="flex flex-row overflow-hidden">
         {services.map((s) => (
           <ServiceCard src={s.imgSrc} title={s.title} icon={s.icon} description={s.description} />
         ))}
+      </div>
+      <div className="mb-10">
+        <div className="flex justify-center align-center text-3xl font-semibold mb-3">Our clients say...</div>
+        <Testimonials />
       </div>
     </div>
   );
