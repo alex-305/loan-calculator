@@ -12,7 +12,7 @@ function Testimonials() {
       <CarouselContent className="">
         {Array.from({ length: 5 }).map((_, index) => (
           <CarouselItem key={index} className="basis-1/3">
-            <div className="p-1 mx-5">
+            <div className="p-1 ml-5">
               <Card className="select-none cursor-grab bg-emerald-950 text-white border-none">
                 <CardContent className="flex aspect-square items-center justify-center p-6">
                   <div className="flex flex-col">
@@ -29,8 +29,12 @@ function Testimonials() {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
+      <div className="text-black absolute top-1/2 left-1 flex items-center justify-center">
+        <CarouselPrevious className="relative left-0 translate-x-0 hover:translate-x-0 hover:bg-primary/90" />
+      </div>
+      <div className="text-black absolute top-1/2 right-1 flex items-center justify-center">
+        <CarouselNext className="relative right-0 translate-x-0 hover:translate-x-0 hover:bg-primary/90" />
+      </div>
     </Carousel>
   );
 }

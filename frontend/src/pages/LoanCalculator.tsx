@@ -85,7 +85,7 @@ function LoanCalculator() {
     setEstimatedDownPayment(calculateDownPayment(buyoutAmount, downPayment));
     setTotalPayment(calculateTotal(principle, annualInterest, termLength));
     setYears(calculateYears(principle, annualInterest, termLength, estimatedMonthlyPayment));
-  }, [buyoutAmount, downPayment, termLength, annualInterest, estimatedMonthlyPayment]);
+  }, [buyoutAmount, downPayment, termLength, annualInterest, estimatedMonthlyPayment, calculateTotal]);
 
   return (
     <div className="bg-white text-black p-5">

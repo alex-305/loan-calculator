@@ -91,7 +91,7 @@ function NumInput({
 
   useEffect(() => {
     if (!isInputFocused) setnumStr(numberToStr(value));
-  }, [value]);
+  }, [value, isInputFocused]);
 
   return (
     <div>
