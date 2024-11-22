@@ -67,7 +67,7 @@ function Home() {
           </Button>
         </div>
       </ImgCard>
-      <div className="flex justify-center align-center p-5 text-3xl">Our Services</div>
+      <div className="flex justify-center align-center p-5 text-3xl font-semibold tracking-wide uppercase">Our Services</div>
       <div className="flex flex-row overflow-hidden">
         {services.map((s) => (
           <ServiceCard src={s.imgSrc} title={s.title} icon={s.icon} description={s.description} />
